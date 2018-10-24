@@ -1,7 +1,7 @@
 package fr.lewon.nn.ihm.groups;
 
 import fr.lewon.ihm.builder.GenericGroup;
-import fr.lewon.nn.ihm.panes.GamePane;
+import fr.lewon.nn.ihm.panes.SimulationPane;
 import fr.lewon.nn.ihm.panes.ParametersPane;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -17,7 +17,7 @@ public class HomeGroup extends GenericGroup {
 	protected Node generateChildren() {
 		GridPane content = new GridPane();
 		content.add(new ParametersPane(), 0, 0);
-		content.add(new GamePane(), 1, 0);
+		content.add(new SimulationPane(), 1, 0);
 		return content;
 	}
 

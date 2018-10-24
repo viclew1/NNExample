@@ -5,10 +5,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class GamePane extends GenericPane {
+public class SimulationPane extends GenericPane {
 
-	public GamePane() {
-		super("Game");
+	public SimulationPane() {
+		super("Simulation");
 	}
 
 	@Override
