@@ -1,7 +1,5 @@
 package fr.lewon.nn.ihm.groups;
 
-import javax.swing.Timer;
-
 import fr.lewon.ihm.builder.GenericGroup;
 import fr.lewon.nn.ihm.listeners.HomeListener;
 import fr.lewon.nn.ihm.panes.ParametersPane;
@@ -35,7 +33,7 @@ public class HomeGroup extends GenericGroup implements HomeListener {
 
 	@Override
 	public void startSimulation() {
-		
+		//TODO startSimulation
 	}
 	
 }

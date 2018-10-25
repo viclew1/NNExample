@@ -1,9 +1,5 @@
 package fr.lewon.nn.trials;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import fr.lewon.Trial;
 import fr.lewon.nn.trials.impl.*;
 
