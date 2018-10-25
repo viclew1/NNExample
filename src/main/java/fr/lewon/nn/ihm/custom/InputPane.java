@@ -1,18 +1,18 @@
 package fr.lewon.nn.ihm.custom;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Control;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 
-public abstract class InputPane extends GridPane  {
+public abstract class InputPane<I extends Control, T> extends GridPane  {
 
 	private Text textLabel;
-	private TextField input;
+	private I input;
 	
-	public InputPane(String label, TextField input) {
+	public InputPane(String label, I input) {
 		this.textLabel = new Text(label);
 		this.input = input;
 		Pane spacer = new Pane();
@@ -25,7 +25,9 @@ public abstract class InputPane extends GridPane  {
 		add(this.input, 2, 0);
 	}
 	
-	public String getValue() {
-		return input.getText();
+	public I getControl() {
+		return input;
 	}
+	
+	public abstract T getValue();
 }

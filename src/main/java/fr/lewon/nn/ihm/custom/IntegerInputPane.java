@@ -1,6 +1,6 @@
 package fr.lewon.nn.ihm.custom;
 
-public class IntegerInputPane extends InputPane {
+public class IntegerInputPane extends InputPane<NumberTextField, Integer> {
 
 	public IntegerInputPane(String label) {
 		this(label, null, null);
@@ -17,5 +17,10 @@ public class IntegerInputPane extends InputPane {
 		label += " (" + minValue + " - " + maxValue + ")";
 		return label;
 	}
-	
+
+	@Override
+	public Integer getValue() {
+		return Integer.parseInt(getControl().getText());
+	}
+
 }

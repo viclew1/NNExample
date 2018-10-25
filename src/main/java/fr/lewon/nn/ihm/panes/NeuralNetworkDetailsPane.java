@@ -1,15 +1,14 @@
 package fr.lewon.nn.ihm.panes;
 
 import fr.lewon.ihm.builder.GenericPane;
-import fr.lewon.nn.ihm.custom.InputPane;
 import fr.lewon.nn.ihm.custom.IntegerInputPane;
 import javafx.scene.layout.GridPane;
 
 public class NeuralNetworkDetailsPane extends GenericPane {
 
-	private InputPane inputCount;
-	private InputPane hiddenCount;
-	private InputPane outputCount;
+	private IntegerInputPane inputCount;
+	private IntegerInputPane hiddenCount;
+	private IntegerInputPane outputCount;
 	
 	public NeuralNetworkDetailsPane() {
 		super("Neural network details");

@@ -1,16 +1,15 @@
 package fr.lewon.nn.ihm.panes;
 
 import fr.lewon.ihm.builder.GenericPane;
-import fr.lewon.nn.ihm.custom.InputPane;
 import fr.lewon.nn.ihm.custom.IntegerInputPane;
 import javafx.scene.layout.GridPane;
 
 public class SelectionDetailsPane extends GenericPane {
 
-	private InputPane generationCount;
-	private InputPane individualCount;
-	private InputPane mutationChances;
-	private InputPane crossoverChances;
+	private IntegerInputPane generationCount;
+	private IntegerInputPane individualCount;
+	private IntegerInputPane mutationChances;
+	private IntegerInputPane crossoverChances;
 	
 	
 	public SelectionDetailsPane() {
