@@ -12,5 +12,10 @@ public class StringInputPane extends InputPane<TextField, String> {
 	public String getValue() {
 		return getControl().getText();
 	}
+
+	@Override
+	public void setValue(String value) {
+		getControl().setText(value);
+	}
 	
 }

@@ -21,4 +21,9 @@ public class ComboBoxInputPane<T> extends InputPane<ComboBox<T>, T> {
 		return getControl().getValue();
 	}
 
+	@Override
+	public void setValue(T value) {
+		getControl().getSelectionModel().select(value);
+	}
+
 }

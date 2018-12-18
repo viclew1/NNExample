@@ -20,7 +20,12 @@ public class IntegerInputPane extends InputPane<NumberTextField, Integer> {
 
 	@Override
 	public Integer getValue() {
-		return Integer.parseInt(getControl().getText());
+		return getControl().getValue();
+	}
+
+	@Override
+	public void setValue(Integer value) {
+		getControl().setText(String.valueOf(value));
 	}
 
 }

@@ -1,28 +1,29 @@
 package fr.lewon.nn.trials;
 
-import fr.lewon.Trial;
-import fr.lewon.nn.trials.impl.*;
+import fr.lewon.nn.trials.impl.DodgeTrial;
+import fr.lewon.nn.trials.impl.DriveTrial;
+import fr.lewon.nn.trials.impl.EatingTrial;
 
-public enum Trials {
+public enum Simulations {
 
 	DODGE_TRIAL("Dodge trial", new DodgeTrial()),
 	EATING_TRIAL("Eating trial", new EatingTrial()),
 	DRIVE_TRIAL("Drive trial", new DriveTrial());
 	
 	private final String displayName;
-	private final Trial trial;
+	private final Simulation simulation;
 	
-	private Trials(String displayName, Trial trial) {
+	private Simulations(String displayName, Simulation simulation) {
 		this.displayName = displayName;
-		this.trial = trial;
+		this.simulation = simulation;
 	}
 
 	public String getDisplayName() {
 		return displayName;
 	}
 
-	public Trial getTrial() {
-		return trial;
+	public Simulation getSimulation() {
+		return simulation;
 	}
 	
 	public String toString() {

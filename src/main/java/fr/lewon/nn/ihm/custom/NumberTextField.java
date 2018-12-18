@@ -29,5 +29,12 @@ public class NumberTextField extends TextField {
 
 		});
 	}
+	
+	public Integer getValue() {
+		if (getText() == null || "".equals(getText())) {
+			return null;
+		}
+		return Integer.parseInt(getText());
+	}
 
 }

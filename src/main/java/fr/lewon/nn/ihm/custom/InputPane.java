@@ -29,5 +29,11 @@ public abstract class InputPane<I extends Control, T> extends GridPane  {
 		return input;
 	}
 	
+	public String getLabel() {
+		return textLabel.getText();
+	}
+	
 	public abstract T getValue();
+	
+	public abstract void setValue(T value);
 }
