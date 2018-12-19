@@ -9,17 +9,17 @@ import fr.lewon.Individual;
 import fr.lewon.SelectionProcessor;
 import fr.lewon.Trial;
 import fr.lewon.exceptions.NNException;
-import fr.lewon.selection.Selections;
+import fr.lewon.selection.Selection;
 
 public abstract class Simulation extends Trial {
 
 	private static final Logger logger = LoggerFactory.getLogger(Simulation.class);
 	
-	public void start(int generationCount, int individualCount, int mutationChances, int crossoverChances, List<Integer> hiddenLayersSizes) {
+	public void start(int generationCount, int individualCount, int mutationChances, int crossoverChances, List<Integer> hiddenLayersSizes, Selection selection) {
 		
 		List<Individual> population = generatePopulation(hiddenLayersSizes, individualCount);
 		
-		SelectionProcessor selectionProcessor = new SelectionProcessor(this, Selections.STOCHASTIC_UNIVERSAL_SAMPLING, mutationChances, crossoverChances);
+		SelectionProcessor selectionProcessor = new SelectionProcessor(this, selection, mutationChances, crossoverChances);
 		try {
 			selectionProcessor.start(population, generationCount, 1000000);
 		} catch (NNException e) {

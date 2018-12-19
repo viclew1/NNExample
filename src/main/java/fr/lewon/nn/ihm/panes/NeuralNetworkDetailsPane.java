@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.lewon.ihm.builder.GenericPane;
+import fr.lewon.nn.ihm.custom.ComboBoxInputPane;
 import fr.lewon.nn.ihm.custom.IntegerInputPane;
 import fr.lewon.nn.ihm.custom.NumberTextField;
 import fr.lewon.nn.ihm.util.ErrorMessageGenerator;
+import fr.lewon.selection.Selection;
+import fr.lewon.selection.Selections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -19,11 +22,11 @@ import javafx.scene.layout.VBox;
 public class NeuralNetworkDetailsPane extends GenericPane {
 
 	private static final int MAX_LAYERS = 10;
-	
+
+	private ComboBoxInputPane<Selections> selectionMethod;
 	private IntegerInputPane hiddenCount;
 	private Button validButton;
 	private VBox layersSizesPane;
-	private List<Integer> sizesAvailable;
 	
 	public NeuralNetworkDetailsPane() {
 		super("Neural network details");
@@ -33,10 +36,11 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 	protected Pane generateContent() {
 		GridPane content = new GridPane();
 
+		selectionMethod = new ComboBoxInputPane<>("Selection method", Selections.values());
+		selectionMethod.setValue(Selections.STOCHASTIC_UNIVERSAL_SAMPLING);
+		
 		layersSizesPane = new VBox();
-		sizesAvailable = new ArrayList<>();
 		for (int i = 0 ; i < MAX_LAYERS ; i++) {
-			sizesAvailable.add(i);
 			Node ntf = new NumberTextField(1, 20);
 			ntf.setVisible(false);
 			layersSizesPane.getChildren().add(ntf);
@@ -48,9 +52,10 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 		validButton = new Button("Define size");
 		defineValidButtonAction();
 		
-		content.add(hiddenCount, 0, 0);
-		content.add(validButton, 1, 0);
-		content.add(layersSizesPane, 0, 1);
+		content.add(selectionMethod, 0, 0);
+		content.add(hiddenCount, 0, 1);
+		content.add(validButton, 1, 1);
+		content.add(layersSizesPane, 0, 2);
 		
 		return content;
 	}
@@ -99,6 +104,10 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 		}
 
 		return errors;
+	}
+
+	public Selection getSelectionMethod() {
+		return selectionMethod.getValue().getSelection();
 	}
 
 }

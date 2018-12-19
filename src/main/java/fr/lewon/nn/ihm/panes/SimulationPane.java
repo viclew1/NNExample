@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.lewon.ihm.builder.GenericPane;
 import fr.lewon.nn.trials.Simulation;
+import fr.lewon.selection.Selection;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
@@ -50,7 +51,7 @@ public class SimulationPane extends GenericPane {
 	}
 	
 	public void startSimulation(Simulation simulation, int generationCount, int individualCount, int mutationChances,
-			int crossoverChances, List<Integer> hiddenLayersSizes) {
+			int crossoverChances, List<Integer> hiddenLayersSizes, Selection selection) {
 		
 		if (this.simulation != null) {
 			this.simulation.reset();
@@ -61,7 +62,7 @@ public class SimulationPane extends GenericPane {
 			
 			@Override
 			public void run() {
-				SimulationPane.this.simulation.start(generationCount, individualCount, mutationChances, crossoverChances, hiddenLayersSizes);
+				SimulationPane.this.simulation.start(generationCount, individualCount, mutationChances, crossoverChances, hiddenLayersSizes, selection);
 			}
 			
 		}).start();

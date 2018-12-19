@@ -5,6 +5,7 @@ import java.util.List;
 import fr.lewon.ihm.builder.GenericGroup;
 import fr.lewon.nn.ihm.panes.ParametersPane;
 import fr.lewon.nn.ihm.panes.SimulationPane;
+import fr.lewon.selection.Selection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -49,9 +50,10 @@ public class HomeGroup extends GenericGroup {
 					int mutationChances = parametersPane.getSelectionDetailsPane().getMutationChances();
 					int crossoverChances = parametersPane.getSelectionDetailsPane().getCrossoverChances();
 					List<Integer> hiddenLayersSizes = parametersPane.getNeuralNetworkDetailsPane().getHiddenLayersSizes();
+					Selection selection = parametersPane.getNeuralNetworkDetailsPane().getSelectionMethod();
 
 					simulationPane.startSimulation(parametersPane.generateSimulation(), generationCount, individualCount, 
-							mutationChances, crossoverChances, hiddenLayersSizes);
+							mutationChances, crossoverChances, hiddenLayersSizes, selection);
 				} else {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.initOwner(getStage());
