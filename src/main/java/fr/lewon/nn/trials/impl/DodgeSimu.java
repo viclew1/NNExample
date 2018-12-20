@@ -9,7 +9,7 @@ import fr.lewon.nn.ActivationFunctions;
 import fr.lewon.nn.impl.NeuralNetworkClassic;
 import fr.lewon.nn.trials.Simulation;
 
-public class DodgeTrial extends Simulation {
+public class DodgeSimu extends Simulation {
 
 	@Override
 	public double getFitness(Individual individual) throws NNException {

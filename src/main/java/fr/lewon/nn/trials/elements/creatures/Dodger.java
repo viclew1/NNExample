@@ -1,4 +1,4 @@
-package fr.lewon.nn.trials.simuobjects.creature;
+package fr.lewon.nn.trials.elements.creatures;
 
 import fr.lewon.Individual;
 import fr.lewon.engine.geometry.Point2D;

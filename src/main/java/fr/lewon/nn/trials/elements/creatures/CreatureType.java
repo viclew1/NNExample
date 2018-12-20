@@ -1,4 +1,4 @@
-package fr.lewon.nn.trials.simuobjects.creature;
+package fr.lewon.nn.trials.elements.creatures;
 
 public enum CreatureType {
 

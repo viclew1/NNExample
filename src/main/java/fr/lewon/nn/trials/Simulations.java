@@ -1,14 +1,14 @@
 package fr.lewon.nn.trials;
 
-import fr.lewon.nn.trials.impl.DodgeTrial;
-import fr.lewon.nn.trials.impl.DriveTrial;
-import fr.lewon.nn.trials.impl.EatingTrial;
+import fr.lewon.nn.trials.impl.DodgeSimu;
+import fr.lewon.nn.trials.impl.DriveSimu;
+import fr.lewon.nn.trials.impl.EatingSimu;
 
 public enum Simulations {
 
-	DODGE_TRIAL("Dodge trial", new DodgeTrial()),
-	EATING_TRIAL("Eating trial", new EatingTrial()),
-	DRIVE_TRIAL("Drive trial", new DriveTrial());
+	DODGE_SIMU("Dodge simulation", new DodgeSimu()),
+	EATING_SIMU("Eating simulation", new EatingSimu()),
+	DRIVE_SIMU("Drive simulation", new DriveSimu());
 	
 	private final String displayName;
 	private final Simulation simulation;
