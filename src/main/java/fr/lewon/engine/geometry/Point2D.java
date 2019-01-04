@@ -30,4 +30,14 @@ public class Point2D {
 	public void setY(double y) {
 		this.y = y;
 	}
+
+	public void moveByVector(Point2D moveVector) {
+		x += moveVector.x;
+		y += moveVector.y;
+	}
+	
+	public void moveToPoint(Point2D destPoint) {
+		x = destPoint.x;
+		y = destPoint.y;
+	}
 }

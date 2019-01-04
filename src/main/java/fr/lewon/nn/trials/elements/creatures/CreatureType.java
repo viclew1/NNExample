@@ -4,8 +4,21 @@ public enum CreatureType {
 
 	DODGER(1, 3);
 	
-	private CreatureType(double size, double speed) {
-		
+	private final double baseSize;
+	private final double baseSpeed;
+	
+	private CreatureType(double baseSize, double baseSpeed) {
+		this.baseSize = baseSize;
+		this.baseSpeed = baseSpeed;
 	}
+
+	public double getBaseSize() {
+		return baseSize;
+	}
+
+	public double getBaseSpeed() {
+		return baseSpeed;
+	}
+	
 	
  }
