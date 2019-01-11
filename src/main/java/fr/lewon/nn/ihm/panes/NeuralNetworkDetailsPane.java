@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class NeuralNetworkDetailsPane extends GenericPane {
 
@@ -27,9 +28,9 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 	private IntegerInputPane hiddenCount;
 	private Button validButton;
 	private VBox layersSizesPane;
-	
-	public NeuralNetworkDetailsPane() {
-		super("Neural network details");
+
+	public NeuralNetworkDetailsPane(Stage stage) {
+		super(stage, "Neural network details");
 	}
 
 	@Override
@@ -38,37 +39,37 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 
 		selectionMethod = new ComboBoxInputPane<>("Selection method", Selections.values());
 		selectionMethod.setValue(Selections.STOCHASTIC_UNIVERSAL_SAMPLING);
-		
+
 		layersSizesPane = new VBox();
 		for (int i = 0 ; i < MAX_LAYERS ; i++) {
 			Node ntf = new NumberTextField(1, 20);
 			ntf.setVisible(false);
 			layersSizesPane.getChildren().add(ntf);
 		}
-		
+
 		hiddenCount = new IntegerInputPane("hidden layers count", 0, 10);
 		hiddenCount.setValue(0);
-		
+
 		validButton = new Button("Define size");
 		defineValidButtonAction();
-		
+
 		content.add(selectionMethod, 0, 0);
 		content.add(hiddenCount, 0, 1);
 		content.add(validButton, 1, 1);
 		content.add(layersSizesPane, 0, 2);
-		
+
 		return content;
 	}
-	
+
 	public void defineValidButtonAction() {
 		validButton.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
-				
+
 				Integer hiddenCountValue = hiddenCount.getValue();
 				int val = hiddenCountValue == null ? 0 : hiddenCountValue;
-				
+
 				for (int i = 0 ; i < MAX_LAYERS ; i++) {
 					layersSizesPane.getChildren().get(i).setVisible(i < val);
 				}
@@ -91,7 +92,7 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 	@Override
 	public List<String> checkErrors() {
 		List<String> errors = new ArrayList<>();
-		
+
 		if (getHiddenLayersCount() == null) {
 			errors.add(ErrorMessageGenerator.INSTANCE.generateNeededFieldMessage(hiddenCount.getLabel()));
 		}

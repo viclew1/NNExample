@@ -19,28 +19,28 @@ public class HomeGroup extends GenericGroup {
 
 	private ParametersPane parametersPane;
 	private SimulationPane simulationPane;
-	
+
 	public HomeGroup(Stage stage) {
 		super(stage);
 	}
 
 	@Override
-	protected Node generateChildren() {
+	protected Node generateChildren(Stage stage) {
 		GridPane content = new GridPane();
-		
-		parametersPane = new ParametersPane();
-		simulationPane = new SimulationPane();
+
+		parametersPane = new ParametersPane(stage);
+		simulationPane = new SimulationPane(stage);
 		defineStartButtonAction(parametersPane.getStartButton());
-		
+
 		content.add(parametersPane, 0, 0);
 		content.add(simulationPane, 1, 0);
-		
+
 		return content;
 	}
-	
+
 	private void defineStartButtonAction(Button button) {
 		button.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 				List<String> errors = parametersPane.checkErrors();
@@ -52,7 +52,7 @@ public class HomeGroup extends GenericGroup {
 					List<Integer> hiddenLayersSizes = parametersPane.getNeuralNetworkDetailsPane().getHiddenLayersSizes();
 					Selection selection = parametersPane.getNeuralNetworkDetailsPane().getSelectionMethod();
 
-					simulationPane.startSimulation(parametersPane.generateSimulation(), generationCount, individualCount, 
+					simulationPane.startSimulation(parametersPane.generateSimulation(), generationCount, individualCount,
 							mutationChances, crossoverChances, hiddenLayersSizes, selection);
 				} else {
 					Alert alert = new Alert(AlertType.WARNING);
@@ -66,7 +66,7 @@ public class HomeGroup extends GenericGroup {
 					alert.showAndWait();
 				}
 			}
-		
+
 		});
 	}
 
