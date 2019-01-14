@@ -10,7 +10,7 @@ import fr.lewon.nn.ihm.custom.IntegerInputPane;
 import fr.lewon.nn.ihm.custom.NumberTextField;
 import fr.lewon.nn.ihm.util.ErrorMessageGenerator;
 import fr.lewon.selection.Selection;
-import fr.lewon.selection.Selections;
+import fr.lewon.selection.SelectionType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -24,7 +24,7 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 
 	private static final int MAX_LAYERS = 10;
 
-	private ComboBoxInputPane<Selections> selectionMethod;
+	private ComboBoxInputPane<SelectionType> selectionMethod;
 	private IntegerInputPane hiddenCount;
 	private Button validButton;
 	private VBox layersSizesPane;
@@ -37,8 +37,8 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 	protected Pane generateContent() {
 		GridPane content = new GridPane();
 
-		selectionMethod = new ComboBoxInputPane<>("Selection method", Selections.values());
-		selectionMethod.setValue(Selections.STOCHASTIC_UNIVERSAL_SAMPLING);
+		selectionMethod = new ComboBoxInputPane<>("Selection method", SelectionType.values());
+		selectionMethod.setValue(SelectionType.STOCHASTIC_UNIVERSAL_SAMPLING);
 
 		layersSizesPane = new VBox();
 		for (int i = 0 ; i < MAX_LAYERS ; i++) {
@@ -108,7 +108,7 @@ public class NeuralNetworkDetailsPane extends GenericPane {
 	}
 
 	public Selection getSelectionMethod() {
-		return selectionMethod.getValue().getSelection();
+		return selectionMethod.getValue().getSelectionImpl();
 	}
 
 }

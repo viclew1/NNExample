@@ -8,11 +8,12 @@ import fr.lewon.exceptions.NNException;
 import fr.lewon.nn.ActivationFunctions;
 import fr.lewon.nn.impl.NeuralNetworkClassic;
 import fr.lewon.nn.trials.Simulation;
+import fr.lewon.utils.PopulationInfos;
 
 public class DodgeSimu extends Simulation {
 
 	@Override
-	public double getFitness(Individual individual) throws NNException {
+	public double testIndividual(Individual individual) throws NNException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -24,6 +25,12 @@ public class DodgeSimu extends Simulation {
 			indivs.add(new NeuralNetworkClassic(ActivationFunctions.SIGMOID, 1, 1, hiddenLayersSizes));
 		}
 		return indivs;
+	}
+
+	@Override
+	public void processBetweenGenerationsActions(PopulationInfos infos) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
