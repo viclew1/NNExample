@@ -9,6 +9,15 @@ public enum GeometryUtils {
 	private GeometryUtils() {}
 
 	/**
+	 * Returns a new Point2D with the same coordinates as the passed point 
+	 * @param p
+	 * @return
+	 */
+	public Point2D copyPoint(Point2D p) {
+		return new Point2D(p.getX(), p.getY());
+	}
+	
+	/**
 	 * Generates a square based on the passed parameters
 	 * @param center the center of the square
 	 * @param sideSize the size of a side of the square
@@ -23,10 +32,34 @@ public enum GeometryUtils {
 		square.moveToPoint(center);
 		return square;
 	}
+	
+	/**
+	 * Gets a new Point2D with the coordinates of the passed 'p' after applying a rotation of 'radius' around 'center'
+	 * @param p
+	 * @param center
+	 * @param radius
+	 * @return
+	 */
+	public Point2D getRevolved(Point2D p, Point2D center, double radius) {
+		Point2D rotatedP = copyPoint(p);
+		rotatedP.revolveAround(center, radius);
+		return rotatedP;
+	}
 
 	/**
-	 * Gets the symmetry of the passed point by the origin (0, 0)
+	 * Gets the symmetry of the passed Point2D 'p' with respect to the point 'center'
 	 * @param p
+	 * @param center
+	 * @return
+	 */
+	public Point2D getOpposite(Point2D p, Point2D center) {
+		Point2D vectorPtoCenter = minusOperation(center, p);
+		return plusOperation(center, vectorPtoCenter);
+	}
+	
+	/**
+	 * Gets the symmetry of the passed Point2D 'p' with respect to the origin (0, 0)
+	 * @param point
 	 * @return
 	 */
 	public Point2D getOpposite(Point2D p) {
