@@ -1,30 +1,53 @@
 package fr.lewon.nn.trials.elements;
 
-import fr.lewon.engine.geometry.Shape2D;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * All elements destined to have an hit box and to interact between other elements in the simulation
- *
- */
+import fr.lewon.exceptions.NNException;
+import fr.lewon.nn.collisions.hitbox.Hitbox;
+
 public abstract class SimuElement {
 
-	/**
-	 * Element's hit box shape, the zone of contact between it and other elements
-	 */
-	private Shape2D hitbox;
+	private final Hitbox hitbox;
+	private final List<SimuElement> subElements;
+	private final List<SimuElement> allElements;
+	private boolean collidable;
 
 	
-	public SimuElement(Shape2D hitbox) {
+	public SimuElement(Hitbox hitbox, boolean collidable) {
 		this.hitbox = hitbox;
+		this.collidable = collidable;
+		subElements = new ArrayList<>();
+		allElements = new ArrayList<>();
 	}
-
 	
-	public Shape2D getHitbox() {
+	
+	public Hitbox getHitbox() {
 		return hitbox;
 	}
-
-	public void setHitbox(Shape2D hitbox) {
-		this.hitbox = hitbox;
+	public boolean isCollidable() {
+		return collidable;
+	}
+	public void setCollidable(boolean collidable) {
+		this.collidable = collidable;
+	}
+	public List<SimuElement> getSubElements() {
+		return subElements;
+	}
+	public List<SimuElement> getAllElements() {
+		if (allElements.size() != subElements.size() + 1) {
+			refreshAllElements();
+		}
+		return allElements;
 	}
 	
+	private void refreshAllElements() {
+		allElements.clear();
+		allElements.add(this);
+		allElements.addAll(subElements);
+	}
+
+	public abstract void updatePosition() throws NNException;
+	
+	public abstract void processIntersection(SimuElement intersectedElement);
 }

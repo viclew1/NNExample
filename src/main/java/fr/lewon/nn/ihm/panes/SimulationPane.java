@@ -3,6 +3,7 @@ package fr.lewon.nn.ihm.panes;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.lewon.exceptions.NNException;
 import fr.lewon.ihm.builder.GenericPane;
 import fr.lewon.nn.trials.Simulation;
 import fr.lewon.selection.Selection;
@@ -59,14 +60,12 @@ public class SimulationPane extends GenericPane {
 		}
 
 		this.simulation = simulation;
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				SimulationPane.this.simulation.start(generationCount, individualCount, mutationChances, crossoverChances, hiddenLayersSizes, selection);
-			}
-
-		}).start();
+		try {
+			SimulationPane.this.simulation.start(generationCount, individualCount, mutationChances, crossoverChances, hiddenLayersSizes, selection);
+		} catch (NNException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
